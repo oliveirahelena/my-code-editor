@@ -5,8 +5,8 @@ import ProtectedRoute from '../auth/ProtectedRoute';
 import paths from './paths';
 import Loading from '../components/common/loading/Loading';
 
-const Home = () => <h1>Home</h1>
-const CodeEditor = () => <h1>Editor</h1>
+const Home = React.lazy(() => import('../pages/home/Home'));
+const CodeEditor = React.lazy(() => import('../pages/code-editor/CodeEditor'));
 
 const Routes = () => {
   const { isLoading } = useAuth0();
