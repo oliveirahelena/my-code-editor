@@ -3,11 +3,13 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import AuthProvider from './auth/AuthProvider';
 import Loading from './components/common/loading/Loading';
 import Routes from './routes/Routes';
+import StoreProvider from './store/StoreProvider';
 import CustomThemeProvider from './theme/CustomThemeProvider';
 
 function App() {
   return (
     <Suspense fallback={<Loading />}>
+      <StoreProvider>
         <Router>
           <AuthProvider>
             <CustomThemeProvider>
@@ -15,6 +17,7 @@ function App() {
             </CustomThemeProvider>
           </AuthProvider>
         </Router>
+        </StoreProvider>
     </Suspense>
   );
 }

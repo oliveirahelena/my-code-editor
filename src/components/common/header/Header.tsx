@@ -4,8 +4,11 @@ import { styled } from '@mui/material/styles';
 import { Link, useLocation } from 'react-router-dom';
 import paths from '../../../routes/paths';
 import CodeEditorButton from './CodeEditorButton';
+import DarkModeSwitch from './DarkModeSwitch';
 import SignInButton from './SignInButton';
 import SignOutButton from './SignOutButton';
+// @ts-ignore
+import OpenWorkspaceButton from './OpenWorkspaceButton';
 
 const StyledLink = styled(Link)(({ theme }) => ({
   textDecoration: 'none',
@@ -21,6 +24,7 @@ const Header = () => {
         <Typography variant="h6" sx={{ flex: 1 }}>
           <StyledLink to={paths.home}>Code Editor App</StyledLink>
         </Typography>
+        <DarkModeSwitch />
         {isAuthenticated ? <AuthenticatedButtons /> : <UnauthenticatedButtons />}
       </Toolbar>
     </AppBar>
@@ -42,7 +46,7 @@ const AuthenticatedButtons = () => {
 
   return (
     <AuthenticatedButtonsContainer>
-      {location.pathname === paths.home ? <CodeEditorButton /> : <h1>OpenWorkspaceButton</h1>}
+      {location.pathname === paths.home ? <CodeEditorButton /> : <OpenWorkspaceButton />}
       <SignOutButton />
     </AuthenticatedButtonsContainer>
   );
